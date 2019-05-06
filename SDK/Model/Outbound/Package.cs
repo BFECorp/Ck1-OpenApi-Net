@@ -37,7 +37,7 @@ namespace CK1.OpenPlatform.SDK.Model.Outbound
         /// <summary>
         /// 售价货币
         /// </summary>
-        public Currency SellPriceCurrency { get; set; }
+        public string SellPriceCurrency { get; set; }
 
         /// <summary>
         /// 备注

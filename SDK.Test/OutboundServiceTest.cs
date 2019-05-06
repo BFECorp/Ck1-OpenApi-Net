@@ -8,42 +8,43 @@ using CK1.OpenPlatform.SDK.Services;
 
 using Newtonsoft.Json;
 using UnShippedReason = CK1.OpenPlatform.SDK.Model.UnShippedReason;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace SDK.Test
 {
-    class OutboundServiceTest
+    [TestClass]
+    public class OutboundServiceTest
     {
         private OutboundService _service;
-        private const string AccessToken = "MDA2MjA2NTMtNDRlZS00MTc1LTg0ODQtOTZjOWQ2NzBkMzgx";
+        private const string AccessToken = "MjM4MTkxNTItMTc5Yi00NDRmLTk0NTctODczZDVkMmJkMDAw";
 
         public OutboundServiceTest()
         {
             this._service = new OutboundService(AccessToken);
         }
-
+        [TestMethod]
         public void CreateOutboundOrderTest()
         {
             var request = new CreateOutboundOrderRequest()
             {
-                MerchantId = "MN006334",
                 Remark = "二程下单测试",
                 WarehouseId = "US",
                 Package = new Package()
                 {
-                    PackageId = "MN006T0006",
+                    PackageId = "21173352",
                     Remark = "包裹备注",
                     SellPrice = 5,
-                    SellPriceCurrency = Currency.USD,
-                    ServiceCode = "USRLE",
+                    SellPriceCurrency = "USD",
+                    ServiceCode = "USRLS",
                     ShipToAddress = new ShipToAddress()
                     {
                         Contact = "Carla Chaves",
                         Street1 = "Alex Hull, 930 Tanglewood dr",
                         Street2 = "",
-                        City = "'St. Leonard",
-                        Province = "East Sussex",
-                        Country = "US",
-                        Postcode = "33063-7008",
+                        City = "TOTOWA",
+                        Province = "NEW JERSEY",
+                        Country = "United States",
+                        Postcode = "07512-2305",
                         Phone = "01424 425635",
                         Email = "mario@mkkm.org"
                     },
@@ -54,14 +55,14 @@ namespace SDK.Test
                             Price = 5,
                             ProductName = "bag",
                             Quantity = 1,
-                            Sku = "bag-y001"
+                            Sku = "bag-y004"
                         },
                         new OutboundSkuObject()
                         {
                             Price = 5,
                             ProductName = "bag",
                             Quantity = 1,
-                            Sku = "bag-r001"
+                            Sku = "bag-y005"
                         }
                     }
                 }
@@ -70,18 +71,21 @@ namespace SDK.Test
 
             var json = JsonConvert.SerializeObject(result);
 
+            Assert.IsTrue(result.Success);
+            
             Console.Write(json);
         }
-
+        [TestMethod]
         public void GetOutboundOrderStatusTest()
         {
-            var packageId = "P004test0012101133";
+            var packageId = "21173352";
             var result = this._service.GetOutboundOrderStatus(packageId);
             var json = JsonConvert.SerializeObject(result);
 
+            Assert.IsTrue(result.Success);
             Console.Write(json);
         }
-
+        [TestMethod]
         public void CancelOutboundOrderTest()
         {
             var packageId = "MN006T0005";

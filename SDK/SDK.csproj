@@ -63,11 +63,13 @@
     <Compile Include="Model\DirectExpress\GetDirectExpressStatusResponse.cs" />
     <Compile Include="Model\DirectExpress\Package.cs" />
     <Compile Include="Model\DirectExpress\SkuObject.cs" />
+    <Compile Include="Model\Enum\CreateStatus.cs" />
     <Compile Include="Model\Enum\Currency.cs" />
     <Compile Include="Model\Enum\DirectExpressCustomPrintOption.cs" />
     <Compile Include="Model\Enum\DirectExpressPrintContent.cs" />
     <Compile Include="Model\Enum\ExpressStatus.cs" />
     <Compile Include="Model\Enum\InboundPrintContent.cs" />
+    <Compile Include="Model\Enum\OutboundOrderStatus.cs" />
     <Compile Include="Model\Enum\PrintFormat.cs" />
     <Compile Include="Model\Enum\ProductFlag.cs" />
     <Compile Include="Model\Enum\SalesPlatform.cs" />
