@@ -10,17 +10,18 @@
     using CK1.OpenPlatform.SDK.Services;
 
     using Newtonsoft.Json;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    public class DirectExpressServiceTest
+    [TestClass]
+    public class DirectExpressServiceTest : BaseTest
     {
         private DirectExpressService _service;
-        private const string AccessToken = "ZDM1M2FmYjgtN2Q0NS00MjBlLWE4MWUtZDZlM2VmY2M1Mjkz";
 
         public DirectExpressServiceTest()
         {
             this._service = new DirectExpressService(AccessToken);
         }
-
+        [TestMethod]
         public void CreateDirectExpressOrderTest()
         {
             var request = new CreateDirectExpressOrderRequest()
@@ -38,7 +39,7 @@
                 Width = 10,
                 Length = 10,
                 Weight = 100,
-                PackageId = "unite_test012",
+                PackageId = "unite20190506test012",
 
                 Skus = new List<SkuObject>()
                 {
@@ -70,25 +71,24 @@
                 SellPriceCurrency = Currency.USD,
                 SalesPlatform = SalesPlatform.Aliexpress,
 
-                Remark = "unite test",
-                ImportTrackingNumber = "unite_test006_ImportTrackingNumber",
+                Remark = "unite test"
             };
             var result = this._service.CreateDirectExpressOrder(request);
             var json = JsonConvert.SerializeObject(result);
-
             Console.Write(json);
-        }
 
+            Assert.IsTrue(result.Success);            
+        }
+        [TestMethod]
         public void GetDirectExpressOrderLabelTest()
         {
             var request = new GetDirectExpressOrdersLabelRequest()
             {
-                MerchantId = "MMM",
-                PackageIds = new List<string>() { "unite_test001", "unite_test011" },
+                PackageIds = new List<string>() { "unite20190506test012" },
                 PrintContent = DirectExpressPrintContent.AddressRemark,
                 CustomPrintOptions =
                     new List<DirectExpressCustomPrintOption>() { DirectExpressCustomPrintOption.Custom },
-                PrintFormat = PrintFormat.ClassicA4
+                PrintFormat = PrintFormat.ClassicLabel
             };
 
             var result = this._service.GetDirectExpressOrderLabel(request);
@@ -114,16 +114,19 @@
 
                 Console.Write(json);
             }
-            
+            Assert.IsTrue(result.Success);
         }
-
+        [TestMethod]
         public void GetDirectExpressOrderStatusTest()
         {
-            string packageId = "unite_test010-006";
+            string packageId = "unite20190506test012";
             var result = this._service.GetDirectExpressOrderStatus(packageId);
             var json = JsonConvert.SerializeObject(result);
 
             Console.Write(json);
+            Assert.IsTrue(result.Success);
+            Assert.AreEqual(CreateStatus.Created,result.Result.Status);
+            Assert.AreEqual(result.Result.HandleStatus, DirectExpressOrderStatus.Submitted);
         }
     }
 }

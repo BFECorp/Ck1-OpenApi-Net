@@ -56,6 +56,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="BaseTest.cs" />
     <Compile Include="DataServiceTest.cs" />
     <Compile Include="DirectExpressServiceTest.cs" />
     <Compile Include="InboundServiceTest.cs" />

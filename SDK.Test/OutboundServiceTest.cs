@@ -13,10 +13,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace SDK.Test
 {
     [TestClass]
-    public class OutboundServiceTest
+    public class OutboundServiceTest: BaseTest
     {
         private OutboundService _service;
-        private const string AccessToken = "MjM4MTkxNTItMTc5Yi00NDRmLTk0NTctODczZDVkMmJkMDAw";
 
         public OutboundServiceTest()
         {

@@ -7,35 +7,41 @@ using CK1.OpenPlatform.SDK.Model.DataYewu;
 using CK1.OpenPlatform.SDK.Services;
 
 using Newtonsoft.Json;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace SDK.Test
 {
-    class DataServiceTest
+    [TestClass]
+    public class DataServiceTest : BaseTest
     {
         private DataService _service;
-        private const string AccessToken = "YjI3ZWIyNjItMzEzOS00MGNkLWFmN2UtMzQ1MDY0YzY5ZGUy";
 
         public DataServiceTest()
         {
             this._service = new DataService(AccessToken);
         }
-
+        [TestMethod]
         public void ListWarehouseTest()
         {
             var result = this._service.ListWarehouse();
             var json = JsonConvert.SerializeObject(result);
 
             Console.Write(json);
-        }
 
+            Assert.IsTrue(result.Success);
+            Assert.IsTrue(result.Result.Count > 0);
+        }
+        [TestMethod]
         public void ListLocationTest()
         {
             var result = this._service.ListLocation();
             var json = JsonConvert.SerializeObject(result);
 
             Console.Write(json);
+            Assert.IsTrue(result.Success);
+            Assert.IsTrue(result.Result.Count > 0);
         }
-
+        [TestMethod]
         public void GetOutboundServiceTest()
         {
             var warehouseId = "US";
@@ -43,14 +49,18 @@ namespace SDK.Test
             var json = JsonConvert.SerializeObject(result);
 
             Console.Write(json);
+            Assert.IsTrue(result.Success);
+            Assert.IsTrue(result.Result.Count > 0);
         }
-
+        [TestMethod]
         public void GetDirectExpressServicesTest()
         {
             var result = this._service.GetDirectExpressServices();
             var json = JsonConvert.SerializeObject(result);
 
             Console.Write(json);
+            Assert.IsTrue(result.Success);
+            Assert.IsTrue(result.Result.Count > 0);
         }
     }
 }

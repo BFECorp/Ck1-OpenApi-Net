@@ -7,10 +7,12 @@ using CK1.OpenPlatform.SDK.Model.Inbound;
 using CK1.OpenPlatform.SDK.Services;
 
 using Newtonsoft.Json;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace SDK.Test
 {
-    public class InboundServiceTest
+    [TestClass]
+    public class InboundServiceTest : BaseTest
     {
          private InboundService _service;
         private const string AccessToken = "MDA2MjA2NTMtNDRlZS00MTc1LTg0ODQtOTZjOWQ2NzBkMzgx";
@@ -19,7 +21,7 @@ namespace SDK.Test
         {
             this._service = new InboundService(AccessToken);
         }
-
+        [TestMethod]
         public void CreateInboundOrdersTest()
         {
             var request = new CreateInboundOrderRequest()
@@ -80,8 +82,9 @@ namespace SDK.Test
             var json = JsonConvert.SerializeObject(result);
 
             Console.Write(json);
+            Assert.IsTrue(result.Success);
         }
-
+        [TestMethod]
         public void GetInboundOrderStatusTest()
         {
             var shipmentId = "fangwei001001002";
@@ -89,8 +92,9 @@ namespace SDK.Test
             var json = JsonConvert.SerializeObject(result);
 
             Console.Write(json);
+            Assert.IsTrue(result.Success);
         }
-
+        [TestMethod]
         public void GetInboundOrderLabelTest()
         {
             var request = new GetInboundOrderLabelRequest()
@@ -121,6 +125,7 @@ namespace SDK.Test
 
                 Console.Write(json);
             }
+            Assert.IsTrue(result.Success);
         }
     }
 }

@@ -8,34 +8,18 @@ namespace SDK.Test
     using CK1.OpenPlatform.SDK.Model.Enum;
     using CK1.OpenPlatform.SDK.Model.MerchantSku;
     using CK1.OpenPlatform.SDK.Services;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    public class MerchantSkuServiceTest
+    [TestClass]
+    public class MerchantSkuServiceTest : BaseTest
     {
         private MerchantSkuService _service;
-        private const string AccessToken = "MDA2MjA2NTMtNDRlZS00MTc1LTg0ODQtOTZjOWQ2NzBkMzgx";
 
         public MerchantSkuServiceTest()
         {
             this._service = new MerchantSkuService(AccessToken);
         }
-
-        public void MerchantTest()
-        {
-            var request = new CreateMerchantRequest()
-            {
-                Contact = "fangwei",
-                Email = "123458@test.com",
-                Location = "GZ",
-                MerchantId = "MN006336",
-                MerchantName = "TNT",
-                Phone = "13545678912"
-            };
-            var result = this._service.CreateMerchant(request);
-            var json = JsonConvert.SerializeObject(result);
-
-            Console.Write(json);
-        }
-
+        [TestMethod]
         public void MerchantSkuTest()
         {
             var request = new CreateMerchantSkuRequest()
@@ -51,24 +35,24 @@ namespace SDK.Test
                 ProductFlag = ProductFlag.Simple,
                 ProductName = "bag",
                 ProductRemark = "test123",
-                Sku = "red-bag-008",
+                Sku = "red-bag-190506",
                 Weight = 100,
-                Width = 10M,
-                CustomStorageNo = "OpenApi201604080003"
+                Width = 10M
             };
             var result = this._service.CreateMerchantSku(request);
             var json = JsonConvert.SerializeObject(result);
 
             Console.Write(json);
+            Assert.IsTrue(result.Success);
         }
-
+        [TestMethod]
         public void GetInboundSkuLabelTest()
         {
             var request = new GetSkuLabelRequest()
             {
                 MerchantId = "MMM",
                 PrintFormat = PrintFormat.ClassicLabel,
-                Sku = "Abc",
+                Sku = "red-bag-190506",
                 Quantity = 3,
                 WarehouseId = "US",
             };
@@ -85,7 +69,8 @@ namespace SDK.Test
 
                 Console.WriteLine("ok");
             }
-            
+
+            Assert.IsTrue(result.Success);
         }
     }
 }

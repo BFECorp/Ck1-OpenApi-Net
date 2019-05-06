@@ -10,11 +10,6 @@
     public class GetDirectExpressOrdersLabelRequest
     {
         /// <summary>
-        /// 商家Id
-        /// </summary>
-        public string MerchantId { get; set; }
-
-        /// <summary>
         /// 直发包裹Id列表
         /// </summary>
         public List<string> PackageIds { get; set; }

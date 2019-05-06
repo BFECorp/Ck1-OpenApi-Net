@@ -9,19 +9,20 @@ using CK1.OpenPlatform.SDK.Model.Storage;
 using CK1.OpenPlatform.SDK.Services;
 
 using Newtonsoft.Json;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace SDK.Test
 {
-    class StorageServiceTest
+    [TestClass]
+    public class StorageServiceTest : BaseTest
     {
         private StorageService _service;
-        private const string AccessToken = "MDA2MjA2NTMtNDRlZS00MTc1LTg0ODQtOTZjOWQ2NzBkMzgx";
 
         public StorageServiceTest()
         {
             this._service = new StorageService(AccessToken);
         }
-
+        [TestMethod]
         public void GetInventoryGetTest()
         {
             var request = new GetInventoriesRequest()
@@ -34,8 +35,10 @@ namespace SDK.Test
 
             var json = JsonConvert.SerializeObject(result);
             Console.Write(json);
-        }
 
+            Assert.IsTrue(result.Success);
+        }
+        [TestMethod]
         public void GetInventoryPostTest()
         {
             var request = new InventoriesRequest()
@@ -53,8 +56,10 @@ namespace SDK.Test
 
             var json = JsonConvert.SerializeObject(result);
             Console.Write(json);
-        }
 
+            Assert.IsTrue(result.Success);
+        }
+        [TestMethod]
         public void ListStorageSkuTest()
         {
             var request = new ListStorageSkuRequest()
@@ -69,6 +74,9 @@ namespace SDK.Test
 
             var json = JsonConvert.SerializeObject(result);
             Console.Write(json);
+
+            Assert.IsTrue(result.Success);
+            
         }
     }
 }
