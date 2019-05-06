@@ -25,5 +25,14 @@
         /// 结果数据
         /// </summary>
         public T Result { get; set; }
+
+        /// <summary>
+        /// 返回值
+        /// </summary>
+        public string Content { get; set; }
+        /// <summary>
+        /// 错误信息
+        /// </summary>
+        public string ErrorMessage { get; set; }
     }
 }

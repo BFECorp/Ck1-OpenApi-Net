@@ -7,10 +7,6 @@
     /// </summary>
     public class CreateInboundOrderRequest
     {
-        /// <summary>
-        /// 商家Id
-        /// </summary>
-        public string MerchantId { get; set; }
 
         /// <summary>
         /// 商家入库单Id

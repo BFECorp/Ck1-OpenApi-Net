@@ -15,7 +15,6 @@ namespace SDK.Test
     public class InboundServiceTest : BaseTest
     {
          private InboundService _service;
-        private const string AccessToken = "MDA2MjA2NTMtNDRlZS00MTc1LTg0ODQtOTZjOWQ2NzBkMzgx";
 
         public InboundServiceTest()
         {
@@ -27,16 +26,14 @@ namespace SDK.Test
             var request = new CreateInboundOrderRequest()
             {
                 Location = "GZ",
-                MerchantId = "MN006334",
                 Remark = "测试入库订单",
-                ShipmentId = "STOL201603300002",
-                ShippingType = "DHL",
+                ShipmentId = "STOL20190506T00002",
+                ShippingType = "SEALCL",
                 WarehouseId = "US",
                 Containers = new List<ContainerInfo>()
                 {
                     new ContainerInfo()
                     {
-                        CustomContainerNo = "CTNTST030003",
                         Height = 40,
                         Length = 20,
                         Width = 10,
@@ -46,18 +43,17 @@ namespace SDK.Test
                             new InboundSkuObject()
                             {
                                 Quantity = 20,
-                                Sku = "bag-y001"
+                                Sku = "bag-y004"
                             },
                             new InboundSkuObject()
                             {
                                 Quantity = 10,
-                                Sku = "bag-y002"
+                                Sku = "bag-y005"
                             }
                         }
                     },
                     new ContainerInfo()
                     {
-                        CustomContainerNo = "CTNTST030004",
                         Height = 25,
                         Length = 20,
                         Width = 10,
@@ -67,12 +63,12 @@ namespace SDK.Test
                             new InboundSkuObject()
                             {
                                 Quantity = 20,
-                                Sku = "bag-r001"
+                                Sku = "bag-y004"
                             },
                             new InboundSkuObject()
                             {
                                 Quantity = 20,
-                                Sku = "bag-r002"
+                                Sku = "bag-y005"
                             }
                         }
                     }
@@ -87,7 +83,7 @@ namespace SDK.Test
         [TestMethod]
         public void GetInboundOrderStatusTest()
         {
-            var shipmentId = "fangwei001001002";
+            var shipmentId = "STOL20190506T00002";
             var result = this._service.GetInboundOrderStatus(shipmentId);
             var json = JsonConvert.SerializeObject(result);
 
@@ -101,7 +97,7 @@ namespace SDK.Test
             {
                 PrintContent = InboundPrintContent.PackingListInChinese,
                 PrintFormat = PrintFormat.ClassicLabel,
-                ShipmentId = "STOL201603300001"
+                ShipmentId = "STOL20190506T00002"
             };
             var result = this._service.GetInboundOrderLabel(request);
             if (result.Success)

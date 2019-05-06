@@ -66,8 +66,9 @@
     <Compile Include="Model\Enum\CreateStatus.cs" />
     <Compile Include="Model\Enum\Currency.cs" />
     <Compile Include="Model\Enum\DirectExpressCustomPrintOption.cs" />
+    <Compile Include="Model\Enum\DirectExpressOrderStatus.cs" />
     <Compile Include="Model\Enum\DirectExpressPrintContent.cs" />
-    <Compile Include="Model\Enum\ExpressStatus.cs" />
+    <Compile Include="Model\Enum\InboundOrderStatus.cs" />
     <Compile Include="Model\Enum\InboundPrintContent.cs" />
     <Compile Include="Model\Enum\OutboundOrderStatus.cs" />
     <Compile Include="Model\Enum\PrintFormat.cs" />
@@ -81,7 +82,6 @@
     <Compile Include="Model\Inbound\GetInboundOrderLabelRequest.cs" />
     <Compile Include="Model\Inbound\GetInboundOrderStatusResponse.cs" />
     <Compile Include="Model\LabelObject.cs" />
-    <Compile Include="Model\MerchantSku\CreateMerchantRequest.cs" />
     <Compile Include="Model\MerchantSku\CreateMerchantSkuRequest.cs" />
     <Compile Include="Model\MerchantSku\GetSkuLabelRequest.cs" />
     <Compile Include="Model\OAuth2\GetSignInUrlRequest.cs" />
@@ -109,6 +109,7 @@
     <Compile Include="Model\Rma\RmaOrderStatus.cs" />
     <Compile Include="Model\Rma\RmaProductInfo.cs" />
     <Compile Include="Model\Rma\RmaWarehouse.cs" />
+    <Compile Include="Model\ShippingCost.cs" />
     <Compile Include="Model\ShipToAddress.cs" />
     <Compile Include="Model\Pricing\SkuInfo.cs" />
     <Compile Include="Model\Storage\GetInventoriesRequest.cs" />

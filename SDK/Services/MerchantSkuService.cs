@@ -13,16 +13,7 @@
     public class MerchantSkuService : OpenApiServiceBase
     {
         public MerchantSkuService(string accessToken) : base(accessToken) { }
-        /// <summary>
-        /// 创建商户
-        /// </summary>
-        public ResponseModel<object> CreateMerchant(CreateMerchantRequest request)
-        {
-            var resource = "merchants";
-            var requests = this._client.BuildRequest(Method.POST, resource, request);
-            var response = this._client.Execute(requests);
-            return this.GetResult(response);
-        }
+
         /// <summary>
         /// 创建sku
         /// </summary>

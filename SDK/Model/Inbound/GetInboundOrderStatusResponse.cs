@@ -7,16 +7,21 @@ namespace CK1.OpenPlatform.SDK.Model.Inbound
     /// 表示获取入库单状态的响应
     /// </summary>
     public class GetInboundOrderStatusResponse 
-    {
-        /// <summary>
-        /// 商家Id
-        /// </summary>
-        public string MerchantId { get; set; }
+    {/// <summary>
+     /// 商家入库单Id
+     /// </summary>
+     /// <example>
+     /// STOL201603300001
+     /// </example>
+        public string ShipmentId { get; set; }
 
         /// <summary>
-        /// 商家入库单Id
+        /// CK1入库单号
         /// </summary>
-        public string ShipmentId { get; set; }
+        /// <example>
+        /// ITST16081800001
+        /// </example>
+        public string Ck1OrderId { get; set; }
 
         /// <summary>
         /// 状态:Open 处理中Closed 已完成
@@ -24,9 +29,23 @@ namespace CK1.OpenPlatform.SDK.Model.Inbound
         public ShipmentStatus Status { get; set; }
 
         /// <summary>
+        /// 处理状态
+        /// </summary>
+        /// <example>
+        /// Submitted
+        /// </example>
+        public InboundOrderStatus? HandleStatus { get; set; }
+
+        /// <summary>
         /// SKU列表
         /// </summary>
         public List<SkuObject> Skus { get; set; }
+
+
+        /// <summary>
+        /// 费用列表,返回已结算的费用信息，运费和税金是分开结算的
+        /// </summary>
+        public List<ShippingCost> ShippingCosts { get; set; }
 
         /// <summary>
         /// 最后更新时间
